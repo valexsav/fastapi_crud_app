@@ -1,13 +1,6 @@
 from fastapi import FastAPI
-
+from routers import user as user_router
 
 app = FastAPI()
 
-
-@app.get("/")
-def main_page():
-    return {"message": "yo hows life?"}
-
-@app.get("/health")
-def health_check():
-    return {"health": "good"}
+app.include_router(user_router.router, prefix = "/users")
